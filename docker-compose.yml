@@ -1,0 +1,12 @@
+services:
+  genymotion:
+    environment:
+      GENYMOTION_LICENSE: your_license_key
+    image: matthewhartstonge/docker-genymotion
+    ports:
+    - 5554:5554
+    - 5555:5555
+    - 5900:5900
+    - 6080:6080
+    restart: unless-stopped
+version: '3.7'
