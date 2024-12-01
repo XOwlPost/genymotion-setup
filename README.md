@@ -26,3 +26,17 @@ Automates the setup of:
 - `fabfile.py`: Main Fabric entry point.
 - `tasks/`: Modular Fabric tasks.
 - `scripts/`: Utility scripts for setup.
+
+## Port Management Module
+
+### Overview
+The `port_manager` module dynamically manages ports for emulators, devices, and services, ensuring no conflicts arise.
+
+### Features
+- Automatically resolves port conflicts.
+- Tracks assignments in `port_map.json`.
+
+### Usage
+Run the port manager manually:
+```bash
+python3 port_manager/port_manager.py

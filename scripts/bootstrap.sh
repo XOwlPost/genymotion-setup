@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "Running Port Manager..."
+python3 port_manager/port_manager.py || {
+    echo "Port Manager failed. Check the logs above."
+    exit 1
+}
+
+echo "Port Manager completed successfully."
+
 # Enable strict error handling
 set -e
 
@@ -60,6 +68,13 @@ if ! fab setup; then
     exit 1
 fi
 
-# Final success message
-echo "Bootstrap completed successfully!"
+echo "Reloading Nginx..."
+sudo systemctl restart nginx
 
+echo "Testing Nginx configuration..."
+if ! curl http://127.0.0.1:6080; then
+    echo "Genymotion setup may have encountered an issue. Check logs for details."
+    exit 1
+fi
+
+echo "Bootstrap completed successfully!"
